@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Azure Stay | Hotel Booking</title>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-content">
+        <a class="brand" href="#home" aria-label="Azure Stay Home">Azure Stay</a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="#home">Home</a>
+          <a href="#rooms">Rooms</a>
+          <a href="#booking">Book</a>
+          <a href="#dashboard">Dashboard</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero section">
+        <div class="container hero-grid">
+          <div>
+            <p class="eyebrow">City Center · 5 Star Experience</p>
+            <h1>Modern stays designed for comfort and convenience.</h1>
+            <p class="lead">
+              Discover curated room categories, real-time availability, and seamless booking in a
+              single dashboard.
+            </p>
+            <a href="#booking" class="btn btn-primary">Book Your Stay</a>
+          </div>
+          <div class="card categories-card" aria-label="Room categories overview">
+            <h2>Room Categories</h2>
+            <ul class="category-list">
+              <li><span>Deluxe</span><span>From $149</span></li>
+              <li><span>Executive</span><span>From $219</span></li>
+              <li><span>Suite</span><span>From $299</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="rooms" class="section section-muted">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Available Rooms</h2>
+            <p>Choose from our available rooms and reserve instantly.</p>
+          </div>
+          <div id="rooms-loading" class="loading" hidden>Loading rooms…</div>
+          <div id="room-list" class="card-grid" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section id="booking" class="section">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Booking Form</h2>
+            <p>Complete your details and confirm your reservation.</p>
+          </div>
+
+          <form id="booking-form" class="card booking-form" novalidate>
+            <div class="form-grid">
+              <label>
+                Guest Name
+                <input type="text" name="guestName" autocomplete="name" required />
+                <span class="field-error" data-error-for="guestName"></span>
+              </label>
+
+              <label>
+                Email
+                <input type="email" name="email" autocomplete="email" required />
+                <span class="field-error" data-error-for="email"></span>
+              </label>
+
+              <label>
+                Phone
+                <input type="tel" name="phone" autocomplete="tel" required />
+                <span class="field-error" data-error-for="phone"></span>
+              </label>
+
+              <label>
+                Room Selection
+                <select name="roomId" id="room-select" required>
+                  <option value="">Select a room</option>
+                </select>
+                <span class="field-error" data-error-for="roomId"></span>
+              </label>
+
+              <label>
+                Check-in Date
+                <input type="date" name="checkIn" required />
+                <span class="field-error" data-error-for="checkIn"></span>
+              </label>
+
+              <label>
+                Check-out Date
+                <input type="date" name="checkOut" required />
+                <span class="field-error" data-error-for="checkOut"></span>
+              </label>
+            </div>
+
+            <div class="form-footer">
+              <p class="price-row">Total: <strong id="total-price">$0</strong></p>
+              <button id="submit-booking" class="btn btn-primary" type="submit">Confirm Booking</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section id="dashboard" class="section section-muted">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Booking Dashboard</h2>
+            <p>Track all bookings and cancel when needed.</p>
+          </div>
+          <div id="bookings-loading" class="loading" hidden>Loading bookings…</div>
+          <div id="booking-list" class="stack" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+
+    <div id="notification" class="notification" role="status" aria-live="polite" hidden></div>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
